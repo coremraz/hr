@@ -1,0 +1,49 @@
+version: "3"
+services:
+    nginx:
+        container_name: hrp_srv
+        image: nginx:latest
+        volumes:
+            - ./_docker/nginx/logs:/var/log/nginx
+            - ./:/var/www
+            - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./_docker/php-fpm/www.conf:/etc/php-fpm.d/www.conf
+            - /etc/letsencrypt/:/etc/letsencrypt/
+        ports:
+            - "8081:80"
+            - "4444:443"
+        depends_on:
+            - app
+            - postgres # Изменено с mysql на postgres
+
+    app:
+        container_name: hrp_app
+        build:
+            context: .
+            dockerfile: _docker/app/Dockerfile
+        volumes:
+            - ./:/var/www
+            - ./docker/app/.env:/var/www/html/.env  # <--- Монтируем .env как том
+            - ./_docker/supervisor/logs:/var/log/supervisor
+            - ./_docker/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        depends_on:
+            - postgres
+
+    postgres: # Изменено имя сервиса с mysql на postgres
+        container_name: hrp_pgsql # Изменено имя контейнера
+        image: postgres:15-alpine # Рекомендуется использовать версию и alpine для легковесности
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: root # Пароль root пользователя postgres
+            POSTGRES_DB: laravel # Имя базы данных
+            POSTGRES_USER: laravel # Имя пользователя
+        ports:
+            - "5432:5432" # Стандартный порт PostgreSQL
+        volumes:
+            - pgsql_data:/var/lib/postgresql/data # Изменено имя тома и путь к данным postgres
+            - ./_docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql # Изменено путь к init.sql
+            - ./_docker/postgres/postgres.conf:/etc/postgresql/postgresql.conf # Если нужны специфичные настройки postgresql.conf
+volumes:
+    pgsql_data: # Изменено имя тома

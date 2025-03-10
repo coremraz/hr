@@ -1,0 +1,13 @@
+    151▕      */
+    152▕     protected function onConnectionError($message, $code = null)
+    153▕     {
+    154▕         CommunicationException::handle(
+  ➜ 155▕             new ConnectionException($this, static::createExceptionMessage($message), $code)
+    156▕         );
+    157▕     }
+    158▕ 
+    159▕     /**
+
+      [2m+32 vendor frames [22m
+  33  artisan:35
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))

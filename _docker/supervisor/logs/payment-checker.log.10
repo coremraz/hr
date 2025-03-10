@@ -1,0 +1,23 @@
+
+      [2m+32 vendor frames [22m
+  33  artisan:35
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   Predis\Connection\ConnectionException 
+
+  php_network_getaddresses: getaddrinfo for rc1b-siuf2ac304ph1sbl.mdb.yandexcloud.net failed: Name or service not known [tcp://rc1b-siuf2ac304ph1sbl.mdb.yandexcloud.net:6379]
+
+  at vendor/predis/predis/src/Connection/AbstractConnection.php:155
+    151▕      */
+    152▕     protected function onConnectionError($message, $code = null)
+    153▕     {
+    154▕         CommunicationException::handle(
+  ➜ 155▕             new ConnectionException($this, static::createExceptionMessage($message), $code)
+    156▕         );
+    157▕     }
+    158▕ 
+    159▕     /**
+
+      [2m+32 vendor frames [22m
+  33  artisan:35
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))

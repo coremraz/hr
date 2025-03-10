@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+.long-button {
+    background: #bc2942;
+    border-radius: 11px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+    font-size: 1.15em;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    line-height: 33.4929px;
+    padding: .8em 1em;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+    text-underline-offset: 1px;
+    transition: all .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+}
+
+.long-button:active,
+.long-button:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+}
+
+.long-button:hover {
+    border-bottom-style: none;
+    border-color: #dadada;
+}
+
+.blured {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.32);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.32);
+}
+
+
+.vl-shown {
+    overflow: hidden;
+}
+
+.vl-overlay {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 999999;
+}
+
+.vl-overlay.vl-active {
+    display: flex;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.vl-overlay.vl-full-page {
+    z-index: 9999;
+    position: fixed;
+}
+
+.vl-overlay .vl-background {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.vl-overlay .vl-icon, .vl-parent {
+    position: relative;
+
+}
+
+
+.loader {
+    width: 48px;
+    height: 40px;
+    margin-top: 30px;
+    display: inline-block;
+    position: relative;
+    background: #307cde;
+    border-radius: 15% 15% 35% 35%;
+}
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 45px;
+    top: 8px;
+    border: 4px solid #307cde;
+    width: 16px;
+    height: 20px;
+    border-radius: 0 4px 4px 0;
+}
+.loader::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    color: #307cde;
+    top: -15px;
+    left: 11px;
+    box-sizing: border-box;
+    animation: animloader 1s ease infinite;
+}
+
+@keyframes animloader {
+    0% {
+        box-shadow: 2px 0px rgba(51, 122, 183, 0), 12px 0px rgb(48, 124, 222), 20px 0px rgba(51, 122, 183, 0);
+    }
+    50% {
+        box-shadow: 2px -5px rgb(48, 124, 222), 12px -3px rgb(82, 142, 217), 20px -2px rgb(48, 124, 222);
+    }
+    100% {
+        box-shadow: 2px -8px rgba(51, 122, 183, 0), 12px -5px rgba(51, 122, 183, 0), 20px -5px rgba(51, 122, 183, 0);
+    }
+}
+
