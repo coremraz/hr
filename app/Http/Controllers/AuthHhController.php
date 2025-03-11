@@ -32,7 +32,8 @@ class AuthHhController extends Controller
                 'client_secret' => "U4RGNQGU9QN58MT63NREHN0QQACG98DIUVL24U7GHHRJ4J9VN4ESSJ3U5I8GNU6O",
                 'code' => $code,
                 'grant_type' => 'authorization_code',
-                'redirect_uri' => "http://localhost:8081/api/hh/callback",
+//                TODO: заменить ссылку
+                'redirect_uri' => "http://157.180.35.232:8081/api/hh/callback",
             ]);
 
             if (!$tokenResponse->successful()) {
