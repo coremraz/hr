@@ -21,8 +21,8 @@ return [
     'allowed_methods' => ['*'], // Разрешаем все методы
 
     'allowed_origins' => [
-        'http://localhost:8081',
-        'http://ваш-домен'
+        'http://157.180.35.232:8081',
+        'http://localhost:8081'
     ],
 
     'allowed_origins_patterns' => [],
