@@ -21,7 +21,8 @@ return [
     'allowed_methods' => ['*'], // Разрешаем все методы
 
     'allowed_origins' => [
-        env('FRONTEND_URL', 'http://localhost:8081', 'http://157.180.35.232:8081'),  // Разрешаем домен фронтенда
+        'http://localhost:8081',
+        'http://ваш-домен'
     ],
 
     'allowed_origins_patterns' => [],
